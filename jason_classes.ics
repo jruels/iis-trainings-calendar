@@ -9,7 +9,7 @@ SUMMARY:Modern Automation with Terraform and Ansible | TEKsystems | BofA |
   Virtual - EDT
 DTSTART;TZID=America/New_York:20260824T090000
 DTEND;TZID=America/New_York:20260824T170000
-DTSTAMP:20260825T195546Z
+DTSTAMP:20260825T202448Z
 UID:monday-training-11824728312@innovationinsoftware.com
 RRULE:FREQ=WEEKLY;UNTIL=20260829T035900Z;BYDAY=MO,TU,WE,TH,FR
 DESCRIPTION:Status: In Progress\nOpportunity: OPP#-26-0023273\nDelivery: V
@@ -21,7 +21,7 @@ SUMMARY:*Tentative* Guest Speaker_Deploy Helm Charts with Terraform | TEKs
  ystems | BofA | Virtual - EST
 DTSTART;TZID=America/New_York:20260915T080000
 DTEND;TZID=America/New_York:20260915T090000
-DTSTAMP:20260825T195546Z
+DTSTAMP:20260825T202448Z
 UID:monday-training-11824686989@innovationinsoftware.com
 DESCRIPTION:Status: Scheduled\nOpportunity: OPP#-26-0023321\nDelivery: Vir
  tual\nhttps://innovativeio-company.monday.com/boards/18402638125/pulses/11
@@ -32,7 +32,7 @@ SUMMARY:*Tentative* Modern Automation with Terraform and Ansible | TEKsyst
  ems | BofA | Virtual - EDT
 DTSTART;TZID=America/New_York:20261116T090000
 DTEND;TZID=America/New_York:20261116T170000
-DTSTAMP:20260825T195546Z
+DTSTAMP:20260825T202448Z
 UID:monday-training-11824872724@innovationinsoftware.com
 RRULE:FREQ=WEEKLY;UNTIL=20261121T045900Z;BYDAY=MO,TU,WE,TH,FR
 DESCRIPTION:Status: Scheduled\nOpportunity: OPP#-26-0023284\nDelivery: Vir
@@ -44,7 +44,7 @@ SUMMARY:*Tentative* AI-Powered Kubernetes Troubleshooting | TEKsystems | C
  isco | Virtual - TBD
 DTSTART;TZID=America/Los_Angeles:20260929T083000
 DTEND;TZID=America/Los_Angeles:20260929T163000
-DTSTAMP:20260825T195546Z
+DTSTAMP:20260825T202448Z
 UID:monday-training-12336582053@innovationinsoftware.com
 RRULE:FREQ=WEEKLY;UNTIL=20261001T065900Z;BYDAY=MO,TU,WE,TH,FR
 DESCRIPTION:Status: Scheduled\nOpportunity: OPP#-26-0023578\nDelivery: Vir
@@ -56,7 +56,7 @@ SUMMARY:*Tentative* Modern Automation with Terraform and Ansible | TEKsyst
  ems | BofA | Onsite - New York\, NY\, USA
 DTSTART;TZID=America/New_York:20261005T090000
 DTEND;TZID=America/New_York:20261005T170000
-DTSTAMP:20260825T195546Z
+DTSTAMP:20260825T202448Z
 UID:monday-training-11824741888@innovationinsoftware.com
 RRULE:FREQ=WEEKLY;UNTIL=20261010T035900Z;BYDAY=MO,TU,WE,TH,FR
 DESCRIPTION:Status: Scheduled\nOpportunity: OPP#-26-0023285\nDelivery: Ons
@@ -69,7 +69,7 @@ SUMMARY:*Tentative* Modern Automation with Terraform and Ansible | TEKsyst
  ems | BofA | Virtual - EST
 DTSTART;TZID=America/New_York:20261207T090000
 DTEND;TZID=America/New_York:20261207T170000
-DTSTAMP:20260825T195546Z
+DTSTAMP:20260825T202448Z
 UID:monday-training-12338932508@innovationinsoftware.com
 RRULE:FREQ=WEEKLY;UNTIL=20261212T045900Z;BYDAY=MO,TU,WE,TH,FR
 DESCRIPTION:Status: Scheduled\nOpportunity: OPP#-26-0023558\nDelivery: Vir
@@ -81,7 +81,7 @@ SUMMARY:Kubernetes Introduction | BofA | Virtual - Singapore | OPP#-25-002
  3171
 DTSTART;TZID=Asia/Singapore:20260413T090000
 DTEND;TZID=Asia/Singapore:20260413T170000
-DTSTAMP:20260825T195547Z
+DTSTAMP:20260825T202449Z
 UID:monday-training-11664954992@innovationinsoftware.com
 RRULE:FREQ=WEEKLY;UNTIL=20260414T155900Z;BYDAY=MO,TU,WE,TH,FR
 DESCRIPTION:Status: Completed\nOpportunity: OPP#-25-0023171\nDelivery: Vir
@@ -92,7 +92,7 @@ BEGIN:VEVENT
 SUMMARY:Modern Automation w Terraform & Ansible | BofA | Charlotte\, NC
 DTSTART;TZID=America/New_York:20260420T090000
 DTEND;TZID=America/New_York:20260420T100000
-DTSTAMP:20260825T195547Z
+DTSTAMP:20260825T202449Z
 UID:monday-training-11664978545@innovationinsoftware.com
 RRULE:FREQ=WEEKLY;UNTIL=20260425T035900Z;BYDAY=MO,TU,WE,TH,FR
 DESCRIPTION:Status: Post Class\nOpportunity: OPP#-26-0023278\nDelivery: On
@@ -103,7 +103,7 @@ BEGIN:VEVENT
 SUMMARY:Modern Automation with Terraform and Ansible | BofA | Plano\, TX
 DTSTART;TZID=America/Chicago:20260504T090000
 DTEND;TZID=America/Chicago:20260504T170000
-DTSTAMP:20260825T195547Z
+DTSTAMP:20260825T202449Z
 UID:monday-training-11808288974@innovationinsoftware.com
 RRULE:FREQ=WEEKLY;UNTIL=20260509T045900Z;BYDAY=MO,TU,WE,TH,FR
 DESCRIPTION:Status: Post Class\nOpportunity: OPP#-26-0023279\nDelivery: On
@@ -115,7 +115,7 @@ SUMMARY:Modern Automation with Terraform and Ansible | BofA | Jersey City
  \, NJ
 DTSTART;TZID=America/New_York:20260518T090000
 DTEND;TZID=America/New_York:20260518T170000
-DTSTAMP:20260825T195547Z
+DTSTAMP:20260825T202449Z
 UID:monday-training-11808397050@innovationinsoftware.com
 RRULE:FREQ=WEEKLY;UNTIL=20260523T035900Z;BYDAY=MO,TU,WE,TH,FR
 DESCRIPTION:Status: Post Class\nOpportunity: OPP#-26-0023280\nDelivery: On
@@ -126,7 +126,7 @@ BEGIN:VEVENT
 SUMMARY:DevSecOps: Threat Modeling and Risk Assessment | Cisco | Virtual
 DTSTART;TZID=America/New_York:20260526T080000
 DTEND;TZID=America/New_York:20260526T093000
-DTSTAMP:20260825T195547Z
+DTSTAMP:20260825T202449Z
 UID:monday-training-11809124502@innovationinsoftware.com
 DESCRIPTION:Status: Post Class\nDelivery: Virtual\nhttps://innovativeio-co
  mpany.monday.com/boards/18408627394/pulses/11809124502
@@ -136,7 +136,7 @@ SUMMARY:Modern Automation with Terraform and Ansible | TEKsystems | BofA |
   Onsite - Jacksonville\, FL\, USA
 DTSTART;TZID=America/Los_Angeles:20260601T090000
 DTEND;TZID=America/Los_Angeles:20260601T170000
-DTSTAMP:20260825T195547Z
+DTSTAMP:20260825T202449Z
 UID:monday-training-11818622451@innovationinsoftware.com
 RRULE:FREQ=WEEKLY;UNTIL=20260606T065900Z;BYDAY=MO,TU,WE,TH,FR
 DESCRIPTION:Status: Post Class\nDelivery: Onsite\nhttps://innovativeio-com
@@ -147,7 +147,7 @@ SUMMARY:AI-Powered Kubernetes Troubleshooting | TEKsystems | Cisco | Virtu
  al - EST
 DTSTART;TZID=America/Los_Angeles:20260611T083000
 DTEND;TZID=America/Los_Angeles:20260611T163000
-DTSTAMP:20260825T195547Z
+DTSTAMP:20260825T202449Z
 UID:monday-training-11823614851@innovationinsoftware.com
 RRULE:FREQ=WEEKLY;UNTIL=20260613T065900Z;BYDAY=MO,TU,WE,TH,FR
 DESCRIPTION:Status: Post Class\nOpportunity: OPP#-26-0023380\nDelivery: Vi
@@ -159,7 +159,7 @@ SUMMARY:Modern Automation with Terraform and Ansible | TEKsystems | BofA |
   Onsite - Plano\, TX\, USA
 DTSTART;TZID=America/Los_Angeles:20260622T090000
 DTEND;TZID=America/Los_Angeles:20260622T170000
-DTSTAMP:20260825T195547Z
+DTSTAMP:20260825T202449Z
 UID:monday-training-11823642954@innovationinsoftware.com
 RRULE:FREQ=WEEKLY;UNTIL=20260627T065900Z;BYDAY=MO,TU,WE,TH,FR
 DESCRIPTION:Status: Post Class\nOpportunity: OPP#-26-0023328\nDelivery: On
@@ -171,7 +171,7 @@ SUMMARY:Modern Automation with Terraform and Ansible | TEKsystems | BofA |
   Onsite - Chicago\, IL\, USA
 DTSTART;TZID=America/Chicago:20260706T090000
 DTEND;TZID=America/Chicago:20260706T170000
-DTSTAMP:20260825T195547Z
+DTSTAMP:20260825T202449Z
 UID:monday-training-11824594391@innovationinsoftware.com
 RRULE:FREQ=WEEKLY;UNTIL=20260711T045900Z;BYDAY=MO,TU,WE,TH,FR
 DESCRIPTION:Status: Post Class\nOpportunity: OPP#-26-0023282\nDelivery: Vi
@@ -182,7 +182,7 @@ BEGIN:VEVENT
 SUMMARY:Azure Core Solutions | ProTech | ALDOT | Onsite -
 DTSTART;TZID=America/Chicago:20260720T083000
 DTEND;TZID=America/Chicago:20260720T163000
-DTSTAMP:20260825T195547Z
+DTSTAMP:20260825T202449Z
 UID:monday-training-11901265989@innovationinsoftware.com
 RRULE:FREQ=WEEKLY;UNTIL=20260722T045900Z;BYDAY=MO,TU,WE,TH,FR
 DESCRIPTION:Status: Post Class\nOpportunity: DEL-227\,828\nDelivery: Onsit
@@ -193,7 +193,7 @@ BEGIN:VEVENT
 SUMMARY:DevOps: CI/CD | ProTech | ALDOT | Onsite -
 DTSTART;TZID=America/Chicago:20260722T083000
 DTEND;TZID=America/Chicago:20260722T163000
-DTSTAMP:20260825T195547Z
+DTSTAMP:20260825T202449Z
 UID:monday-training-11901285458@innovationinsoftware.com
 RRULE:FREQ=WEEKLY;UNTIL=20260724T045900Z;BYDAY=MO,TU,WE,TH,FR
 DESCRIPTION:Status: Post Class\nDelivery: Onsite\nhttps://innovativeio-com
@@ -203,7 +203,7 @@ BEGIN:VEVENT
 SUMMARY:Managing Azure Using Terraform | ProTech | Virtual - EDT
 DTSTART;TZID=America/New_York:20260728T080000
 DTEND;TZID=America/New_York:20260728T160000
-DTSTAMP:20260825T195547Z
+DTSTAMP:20260825T202449Z
 UID:monday-training-12422939188@innovationinsoftware.com
 RRULE:FREQ=WEEKLY;UNTIL=20260731T035900Z;BYDAY=MO,TU,WE,TH,FR
 DESCRIPTION:Status: Post Class\nDelivery: Virtual\nhttps://innovativeio-co
@@ -214,7 +214,7 @@ SUMMARY:Modern Automation with Terraform and Ansible | TEKsystems | BofA |
   Onsite - Pennington\, NJ\, USA
 DTSTART;TZID=America/Los_Angeles:20260810T090000
 DTEND;TZID=America/Los_Angeles:20260810T170000
-DTSTAMP:20260825T195547Z
+DTSTAMP:20260825T202449Z
 UID:monday-training-11824677020@innovationinsoftware.com
 RRULE:FREQ=WEEKLY;UNTIL=20260815T065900Z;BYDAY=MO,TU,WE,TH,FR
 DESCRIPTION:Status: Post Class\nOpportunity: OPP#-26-0023283\nDelivery: On
