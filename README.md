@@ -1,5 +1,10 @@
 # IIS classes to Fantastical calendar feed
 
+> **New:** there's also a native iPhone app that shows *all* trainings from
+> these boards as a chalkboard calendar with month and week views,
+> tap-to-zoom days, and a foldable-friendly two-pane layout. See
+> [`ios/README.md`](ios/README.md).
+
 Publishes a filtered `.ics` feed of the classes assigned to you across three
 Monday boards, so Fantastical can subscribe to it.
 
