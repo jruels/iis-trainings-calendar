@@ -111,10 +111,13 @@ struct SketchyRect: Shape {
             let len = max(hypot(dx, dy), 1)
             let ux = dx / len, uy = dy / len
             let o = min(overshoot, len * 0.08)
-            let start = CGPoint(x: a.x - ux * o * rng.next() + rng.signed() * wobble * 0.5,
-                                y: a.y - uy * o * rng.next() + rng.signed() * wobble * 0.5)
-            let end = CGPoint(x: b.x + ux * o * rng.next() + rng.signed() * wobble * 0.5,
-                              y: b.y + uy * o * rng.next() + rng.signed() * wobble * 0.5)
+            let half: CGFloat = wobble * 0.5
+            let sx: CGFloat = a.x - ux * o * rng.next() + rng.signed() * half
+            let sy: CGFloat = a.y - uy * o * rng.next() + rng.signed() * half
+            let ex: CGFloat = b.x + ux * o * rng.next() + rng.signed() * half
+            let ey: CGFloat = b.y + uy * o * rng.next() + rng.signed() * half
+            let start = CGPoint(x: sx, y: sy)
+            let end = CGPoint(x: ex, y: ey)
             let bow = rng.signed() * wobble * min(1, len / 60)
             let mid = CGPoint(x: (a.x + b.x) / 2 - uy * bow, y: (a.y + b.y) / 2 + ux * bow)
             p.move(to: start)
@@ -137,8 +140,10 @@ struct ChalkCircle: Shape {
         let startAngle = -CGFloat.pi * 0.65
         for i in 0...steps {
             let t = CGFloat(i) / CGFloat(steps)
-            let ang = startAngle + t * turns * 2 * .pi
-            let drift = 1 + 0.06 * sin(t * .pi * 3) + 0.03 * rng.signed() + 0.05 * t
+            let ang: CGFloat = startAngle + t * turns * 2 * CGFloat.pi
+            let wave: CGFloat = sin(t * CGFloat.pi * 3)
+            let jitter: CGFloat = rng.signed()
+            let drift: CGFloat = 1 + 0.06 * wave + 0.03 * jitter + 0.05 * t
             let pt = CGPoint(x: c.x + cos(ang) * rx * drift, y: c.y + sin(ang) * ry * drift)
             if i == 0 { p.move(to: pt) } else { p.addLine(to: pt) }
         }
