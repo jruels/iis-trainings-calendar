@@ -1,0 +1,229 @@
+<title>Trainings Calendar Looks</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap">
+<style>
+/* Layout: a presentation page; three phone-width mockups side by side on desktop, stacked on a phone. */
+:root {
+  --bg: #f3f4f6; --fg: #111827; --muted: #6b7280; --line: #e5e7eb; --chip: #ffffff;
+  --font: "Inter", -apple-system, system-ui, sans-serif;
+}
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) { --bg: #0f1115; --fg: #f3f4f6; --muted: #9ca3af; --line: #262a33; --chip: #181b22; color-scheme: dark; } }
+:root[data-theme="dark"] { --bg: #0f1115; --fg: #f3f4f6; --muted: #9ca3af; --line: #262a33; --chip: #181b22; color-scheme: dark; }
+* { box-sizing: border-box; }
+body { background: var(--bg); color: var(--fg); font-family: var(--font); font-size: 15px; line-height: 1.45; }
+.wrap { max-width: 1240px; margin: 0 auto; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); padding-block: 22px 60px; }
+.intro h1 { font-size: 26px; margin: 0 0 4px; letter-spacing: -.02em; text-wrap: balance; }
+.intro p { margin: 0; color: var(--muted); max-width: 62ch; }
+.jump { display: flex; gap: 8px; flex-wrap: wrap; margin: 14px 0 22px; }
+.jump a { text-decoration: none; color: var(--fg); background: var(--chip); border: 1px solid var(--line); padding: 6px 12px; border-radius: 99px; font-weight: 600; font-size: 14px; }
+.grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(330px, 1fr)); gap: 28px; align-items: start; }
+.opt { display: grid; gap: 12px; min-width: 0; scroll-margin-top: 16px; }
+.opt h2 { margin: 0; font-size: 19px; letter-spacing: -.01em; display: flex; align-items: baseline; gap: 8px; }
+.opt h2 b { display: inline-grid; place-items: center; width: 26px; height: 26px; border-radius: 8px; background: var(--fg); color: var(--bg); font-size: 14px; }
+.opt .what { margin: 0; color: var(--muted); font-size: 14px; }
+.tags { display: flex; flex-wrap: wrap; gap: 6px; }
+.tags span { font-size: 12px; padding: 3px 8px; border-radius: 6px; border: 1px solid var(--line); color: var(--muted); }
+.note { margin-top: 28px; color: var(--muted); font-size: 13px; }
+
+/* ---------- shared mockup skeleton ---------- */
+.phone { width: 100%; max-width: 390px; border-radius: 34px; overflow: hidden; padding: 18px 14px 18px; position: relative; isolation: isolate; }
+.m-head { display: flex; align-items: flex-start; gap: 8px; }
+.m-head .t { flex: 1; min-width: 0; }
+.m-title { font-size: 30px; line-height: 1.05; }
+.m-sub { font-size: 13px; margin-top: 3px; }
+.m-ico { width: 34px; height: 34px; display: grid; place-items: center; flex: none; }
+.m-ico svg { width: 17px; height: 17px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+.m-ctrl { display: flex; align-items: center; gap: 6px; margin: 14px 0 12px; }
+.m-seg { display: flex; padding: 3px; font-size: 13px; }
+.m-seg span { padding: 5px 13px; }
+.m-ctrl .sp { flex: 1; }
+.m-today { font-size: 13px; padding: 6px 12px; }
+.m-dow { display: grid; grid-template-columns: repeat(5, 1fr); font-size: 11px; text-align: center; padding-bottom: 6px; }
+.m-week { position: relative; }
+.m-cells { display: grid; grid-template-columns: repeat(5, 1fr); height: 100%; }
+.m-cell { padding: 4px 5px; display: flex; justify-content: space-between; align-items: flex-start; font-size: 13px; }
+.m-num { width: 24px; height: 24px; display: grid; place-items: center; border-radius: 50%; }
+.m-count { font-size: 10px; margin-top: 5px; }
+.m-bar { position: absolute; height: 20px; display: flex; align-items: center; gap: 4px; padding: 0 6px; font-size: 11px; white-space: nowrap; overflow: hidden; }
+.m-bar .t { overflow: hidden; text-overflow: ellipsis; }
+.m-bar .ini { font-size: 9px; font-weight: 700; padding: 1px 4px; flex: none; }
+.m-label { font-size: 11px; letter-spacing: .08em; text-transform: uppercase; margin: 16px 2px 8px; }
+.m-card { padding: 14px; }
+.m-card .ct { font-size: 16px; line-height: 1.25; }
+.m-card .cw { font-size: 13px; margin-top: 3px; display: flex; align-items: center; gap: 6px; }
+.m-card .cw i { width: 8px; height: 8px; border-radius: 50%; display: inline-block; }
+.m-top { display: flex; gap: 10px; align-items: flex-start; }
+.m-top > div { flex: 1; min-width: 0; }
+.m-status { font-size: 11px; padding: 3px 8px; white-space: nowrap; font-weight: 600; }
+.m-prog { margin: 12px 0 4px; display: flex; align-items: center; gap: 10px; font-size: 12px; }
+.m-dots { display: flex; gap: 5px; }
+.m-dots i { width: 22px; height: 5px; border-radius: 3px; }
+.m-rows { display: grid; grid-template-columns: 1fr 1fr; gap: 10px 14px; margin-top: 12px; }
+.m-row .l { font-size: 10px; letter-spacing: .07em; text-transform: uppercase; }
+.m-row .v { font-size: 13px; }
+.m-row .v2 { font-size: 11px; }
+.m-act { display: flex; gap: 8px; margin-top: 14px; }
+.m-act span { font-size: 12px; padding: 7px 12px; font-weight: 600; }
+
+/* ---------- A · Native ---------- */
+.a { --acc: #2563eb; background: #ffffff; color: #0f172a; font-family: -apple-system, "SF Pro Text", "Inter", system-ui, sans-serif; box-shadow: 0 1px 2px rgba(0,0,0,.06), 0 12px 40px rgba(15,23,42,.10); border: 1px solid #e5e7eb; }
+.a .m-title { font-weight: 700; letter-spacing: -.02em; }
+.a .m-title em { font-style: normal; color: #94a3b8; font-weight: 600; }
+.a .m-sub { color: #64748b; }
+.a .m-ico { color: var(--acc); }
+.a .m-seg { background: #f1f5f9; border-radius: 9px; }
+.a .m-seg span { border-radius: 7px; color: #475569; font-weight: 500; }
+.a .m-seg .on { background: #fff; color: #0f172a; box-shadow: 0 1px 3px rgba(0,0,0,.12); font-weight: 600; }
+.a .m-today { color: var(--acc); font-weight: 600; }
+.a .m-dow { color: #94a3b8; font-weight: 600; border-bottom: 1px solid #eef2f7; }
+.a .m-cell { border-bottom: 1px solid #eef2f7; color: #0f172a; }
+.a .m-cell.out { color: #cbd5e1; }
+.a .today .m-num { background: #ef4444; color: #fff; font-weight: 700; }
+.a .m-count { color: #94a3b8; }
+.a .m-bar { border-radius: 5px; background: color-mix(in srgb, var(--c) 13%, #fff); color: color-mix(in srgb, var(--c) 75%, #000); border-left: 3px solid var(--c); font-weight: 600; }
+.a .m-bar.cb { border-left-width: 0; border-radius: 0 5px 5px 0; }
+.a .m-bar .ini { background: color-mix(in srgb, var(--c) 22%, #fff); border-radius: 4px; }
+.a .m-label { color: #94a3b8; font-weight: 600; }
+.a .m-card { background: #fff; border: 1px solid #e2e8f0; border-radius: 14px; box-shadow: 0 6px 24px rgba(15,23,42,.08); }
+.a .ct { font-weight: 650; font-weight: 600; }
+.a .cw { color: #475569; }
+.a .m-status { background: #ede9fe; color: #6d28d9; border-radius: 6px; }
+.a .m-prog { color: #475569; }
+.a .m-dots i { background: #e2e8f0; } .a .m-dots i.on { background: var(--acc); }
+.a .m-row .l { color: #94a3b8; font-weight: 600; } .a .m-row .v2 { color: var(--acc); }
+.a .m-act span { border-radius: 9px; background: #eff6ff; color: var(--acc); } .a .m-act span.p { background: var(--acc); color: #fff; }
+
+/* ---------- B · Midnight ---------- */
+.b { --acc: #8b9cff; background: radial-gradient(120% 60% at 0% 0%, #26306b 0%, transparent 55%), radial-gradient(90% 50% at 100% 20%, #3b1f5e 0%, transparent 60%), #0a0d1c; color: #e8ebff; font-family: "Manrope", system-ui, sans-serif; box-shadow: 0 20px 60px rgba(10,13,28,.45); }
+.b .m-title { font-weight: 800; letter-spacing: -.03em; }
+.b .m-title em { font-style: normal; background: linear-gradient(90deg, #8b9cff, #e08bff); -webkit-background-clip: text; background-clip: text; color: transparent; }
+.b .m-sub { color: #9aa3cc; }
+.b .m-ico { border-radius: 50%; background: rgba(255,255,255,.07); border: 1px solid rgba(255,255,255,.12); backdrop-filter: blur(10px); }
+.b .m-seg { background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.1); border-radius: 99px; }
+.b .m-seg span { border-radius: 99px; color: #aab2da; font-weight: 600; }
+.b .m-seg .on { background: linear-gradient(90deg, #6d7cff, #b06bff); color: #fff; box-shadow: 0 4px 16px rgba(125,110,255,.45); }
+.b .m-today { border-radius: 99px; background: rgba(255,255,255,.08); border: 1px solid rgba(255,255,255,.14); font-weight: 600; }
+.b .m-dow { color: #6f78a8; font-weight: 700; letter-spacing: .1em; }
+.b .m-cell { border-top: 1px solid rgba(255,255,255,.06); color: #c9cff5; }
+.b .m-cell.out { color: #4a527c; }
+.b .today .m-num { background: linear-gradient(135deg, #6d7cff, #b06bff); color: #fff; font-weight: 800; box-shadow: 0 0 14px rgba(140,120,255,.7); }
+.b .m-count { color: #7e87b8; }
+.b .m-bar { border-radius: 7px; background: linear-gradient(90deg, var(--c), color-mix(in srgb, var(--c) 65%, #0a0d1c)); color: #fff; font-weight: 700; box-shadow: 0 2px 10px color-mix(in srgb, var(--c) 40%, transparent); }
+.b .m-bar.cb { border-radius: 0 7px 7px 0; }
+.b .m-bar .ini { background: rgba(0,0,0,.25); border-radius: 5px; }
+.b .m-label { color: #6f78a8; font-weight: 700; }
+.b .m-card { background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.12); border-radius: 20px; backdrop-filter: blur(14px); box-shadow: inset 0 1px 0 rgba(255,255,255,.08); }
+.b .ct { font-weight: 800; letter-spacing: -.01em; }
+.b .cw { color: #aab2da; }
+.b .m-status { background: rgba(139,156,255,.16); color: #b9c3ff; border-radius: 99px; border: 1px solid rgba(139,156,255,.35); }
+.b .m-prog { color: #aab2da; }
+.b .m-dots i { background: rgba(255,255,255,.12); } .b .m-dots i.on { background: linear-gradient(90deg, #6d7cff, #b06bff); }
+.b .m-row .l { color: #6f78a8; font-weight: 700; } .b .m-row .v2 { color: #c6a3ff; }
+.b .m-act span { border-radius: 99px; background: rgba(255,255,255,.08); border: 1px solid rgba(255,255,255,.12); } .b .m-act span.p { background: linear-gradient(90deg, #6d7cff, #b06bff); border: 0; }
+
+/* ---------- C · Studio ---------- */
+.c { --acc: #4f46e5; background: #eef1f6; color: #1e2235; font-family: "Plus Jakarta Sans", system-ui, sans-serif; box-shadow: 0 12px 40px rgba(30,34,53,.12); border: 1px solid #e3e7ef; }
+.c .m-title { font-weight: 800; letter-spacing: -.03em; }
+.c .m-title em { font-style: normal; color: var(--acc); }
+.c .m-sub { color: #6b7290; font-weight: 500; }
+.c .m-ico { border-radius: 12px; background: #fff; box-shadow: 0 1px 2px rgba(30,34,53,.08); color: #1e2235; }
+.c .m-seg { background: #fff; border-radius: 12px; box-shadow: 0 1px 2px rgba(30,34,53,.08); }
+.c .m-seg span { border-radius: 9px; color: #6b7290; font-weight: 600; }
+.c .m-seg .on { background: #1e2235; color: #fff; }
+.c .m-today { border-radius: 12px; background: #fff; box-shadow: 0 1px 2px rgba(30,34,53,.08); font-weight: 700; color: var(--acc); }
+.c .panel { background: #fff; border-radius: 20px; padding: 10px 8px 6px; box-shadow: 0 1px 2px rgba(30,34,53,.06), 0 8px 24px rgba(30,34,53,.06); }
+.c .m-dow { color: #9aa1bb; font-weight: 700; }
+.c .m-cell { color: #1e2235; font-weight: 600; }
+.c .m-week + .m-week { border-top: 1px dashed #e6e9f1; }
+.c .m-cell.out { color: #c4c9da; }
+.c .today .m-num { background: var(--acc); color: #fff; border-radius: 8px; }
+.c .m-count { color: #9aa1bb; font-weight: 700; }
+.c .m-bar { border-radius: 99px; background: color-mix(in srgb, var(--c) 30%, #fff); color: color-mix(in srgb, var(--c) 55%, #10121c); font-weight: 700; }
+.c .m-bar.cb { border-radius: 0 99px 99px 0; }
+.c .m-bar .ini { background: #fff; border-radius: 99px; color: color-mix(in srgb, var(--c) 70%, #000); }
+.c .m-label { color: #9aa1bb; font-weight: 700; }
+.c .m-card { background: #fff; border-radius: 20px; box-shadow: 0 1px 2px rgba(30,34,53,.06), 0 10px 30px rgba(30,34,53,.08); position: relative; overflow: hidden; }
+.c .m-card::before { content: ""; position: absolute; inset: 0 0 auto; height: 5px; background: var(--c); }
+.c .ct { font-weight: 800; letter-spacing: -.01em; }
+.c .cw { color: #6b7290; font-weight: 600; }
+.c .m-status { background: #e9e7ff; color: var(--acc); border-radius: 8px; }
+.c .m-prog { color: #6b7290; font-weight: 600; }
+.c .m-dots i { background: #e6e9f1; } .c .m-dots i.on { background: var(--c); }
+.c .m-rows { background: #f6f7fb; border-radius: 14px; padding: 10px 12px; }
+.c .m-row .l { color: #9aa1bb; font-weight: 700; } .c .m-row .v { font-weight: 600; } .c .m-row .v2 { color: var(--acc); font-weight: 600; }
+.c .m-act span { border-radius: 12px; background: #f1f0ff; color: var(--acc); } .c .m-act span.p { background: #1e2235; color: #fff; }
+</style>
+
+<div class="wrap">
+  <div class="intro">
+    <h1>Pick a look for the Trainings Calendar</h1>
+    <p>All three keep every feature you have now. Each mockup shows the month view on a phone with one class tapped open. The classes and names are sample data.</p>
+  </div>
+  <nav class="jump" aria-label="Options"><a href="#a">A · Native</a><a href="#b">B · Midnight</a><a href="#c">C · Studio</a></nav>
+
+  <div class="grid">
+    <section class="opt" id="a">
+      <h2><b>A</b> Native</h2>
+      <p class="what">Feels like Apple Calendar. White, quiet, system font, a red circle for today. Classes are tinted bars with a colored edge. Switches to dark automatically with your phone.</p>
+      <div class="tags"><span>Light + dark</span><span>SF / system font</span><span>Most familiar</span></div>
+      <div class="phone a" data-opt="a"></div>
+    </section>
+    <section class="opt" id="b">
+      <h2><b>B</b> Midnight</h2>
+      <p class="what">Dark navy with a soft indigo-to-violet glow and frosted-glass cards. Bold, saturated class bars. Feels premium and stands out on a phone at night.</p>
+      <div class="tags"><span>Dark only</span><span>Manrope</span><span>Most striking</span></div>
+      <div class="phone b" data-opt="b"></div>
+    </section>
+    <section class="opt" id="c">
+      <h2><b>C</b> Studio</h2>
+      <p class="what">A modern SaaS dashboard look. The calendar sits on a white panel over cool grey, with rounded pill bars, indigo accents and roomy cards with a details grid.</p>
+      <div class="tags"><span>Light + dark</span><span>Plus Jakarta Sans</span><span>Most "product"</span></div>
+      <div class="phone c" data-opt="c"></div>
+    </section>
+  </div>
+  <p class="note">You can also mix: for example Studio's layout with Midnight's colors. Tell me which and I'll restyle the live calendar.</p>
+</div>
+
+<script>
+(() => {
+  const COLORS = { a: ["#2563eb", "#7c3aed", "#0d9488", "#d97706", "#db2777"], b: ["#5b6cff", "#a855f7", "#14b8a6", "#f59e0b", "#ec4899"], c: ["#6366f1", "#a78bfa", "#2dd4bf", "#fbbf24", "#f472b6"] };
+  // [startCol, span, lane, colorIdx, title, initials, continuesBefore]
+  const WEEKS = [
+    { days: [16, 17, 18, 19, 20], out: [], bars: [[0,5,0,0,"Platform Eng. Bootcamp · Week 3","AP",1],[0,3,1,1,"Kubernetes Introduction","JS"],[3,2,1,2,"GitHub Actions Deep Dive","BO"],[1,2,2,3,"Secure Coding in Python","CN"]] },
+    { days: [23, 24, 25, 26, 27], out: [], bars: [[0,3,0,1,"Terraform & Ansible","JS"],[0,2,1,4,"Docker Fundamentals","DR"],[2,1,1,2,"AI K8s Troubleshooting","BO"]] },
+    { days: [30, 1, 2, 3, 4], out: [1, 2, 3, 4], bars: [[0,5,0,0,"Platform Eng. Bootcamp · Week 4","AP"],[0,4,1,3,"Ansible for Enterprise","CN"],[2,3,2,1,"Kubernetes Introduction","JS"]] },
+  ];
+  const ico = (p) => `<span class="m-ico"><svg viewBox="0 0 24 24">${p}</svg></span>`;
+  function phone(opt) {
+    const col = COLORS[opt];
+    let weeks = "";
+    WEEKS.forEach((w) => {
+      const lanes = Math.max(...w.bars.map((b) => b[2])) + 1, h = 30 + lanes * 23 + 6;
+      const counts = w.days.map((_, i) => w.bars.filter((b) => b[0] <= i && b[0] + b[1] > i).length);
+      const cells = w.days.map((d, i) => `<div class="m-cell ${w.out.includes(i) ? "out" : ""} ${d === 17 && !w.out.includes(i) ? "today" : ""}"><span class="m-num">${d}</span><span class="m-count">${counts[i]}</span></div>`).join("");
+      const bars = w.bars.map((b) => `<div class="m-bar ${b[6] ? "cb" : ""}" style="--c:${col[b[3]]};left:calc(${b[0] * 20}% + 2px);width:calc(${b[1] * 20}% - 4px);top:${30 + b[2] * 23}px">${b[1] > 1 ? `<span class="ini">${b[5]}</span>` : ""}<span class="t">${b[4]}</span></div>`).join("");
+      weeks += `<div class="m-week" style="height:${h}px"><div class="m-cells">${cells}</div>${bars}</div>`;
+    });
+    const grid = `<div class="m-dow"><span>Mon</span><span>Tue</span><span>Wed</span><span>Thu</span><span>Fri</span></div>${weeks}`;
+    return `
+      <div class="m-head"><div class="t"><div class="m-title">November <em>2026</em></div><div class="m-sub">14 classes this month</div></div>
+        ${ico('<path d="M21 12a9 9 0 1 1-3-6.7L21 8"/><path d="M21 3v5h-5"/>')}${ico('<path d="M3 5h18M6 12h12M10 19h4"/>')}</div>
+      <div class="m-ctrl"><div class="m-seg"><span>Week</span><span class="on">Month</span></div><span class="sp"></span>
+        ${ico('<path d="M15 5l-7 7 7 7"/>')}<span class="m-today">Today</span>${ico('<path d="M9 5l7 7-7 7"/>')}</div>
+      ${opt === "c" ? `<div class="panel">${grid}</div>` : grid}
+      <div class="m-label">Tuesday, Nov 17 · tapped class</div>
+      <div class="m-card" style="--c:${col[1]}">
+        <div class="m-top"><div><div class="ct">Kubernetes Introduction</div><div class="cw"><i style="background:${col[1]}"></i>Jason Smith · 9 AM – 5 PM EST</div></div><span class="m-status">Scheduled</span></div>
+        <div class="m-prog"><span>Day 2 of 3</span><span class="m-dots"><i class="on"></i><i class="on"></i><i></i></span></div>
+        <div class="m-rows">
+          <div class="m-row"><div class="l">Dates</div><div class="v">Nov 16 – 18</div></div>
+          <div class="m-row"><div class="l">Your time</div><div class="v">6 AM – 2 PM</div><div class="v2">PST</div></div>
+          <div class="m-row"><div class="l">Customer</div><div class="v">Acme Bank</div></div>
+          <div class="m-row"><div class="l">Delivery</div><div class="v">Virtual</div></div>
+        </div>
+        <div class="m-act"><span class="p">Open in monday</span><span>Share</span></div>
+      </div>`;
+  }
+  document.querySelectorAll(".phone").forEach((el) => { el.innerHTML = phone(el.dataset.opt); });
+})();
+</script>
