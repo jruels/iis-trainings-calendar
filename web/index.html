@@ -245,6 +245,7 @@ h1 em { font-style: normal; color: var(--muted); font-weight: 600; }
 .who .dot { width: 10px; height: 10px; border-radius: 50%; background: var(--c); flex: none; }
 .who .n { flex: 1; }
 .who .k { color: var(--muted); font-size: 13px; font-variant-numeric: tabular-nums; }
+.hint { font-size: 12px; color: var(--muted); margin: 6px 2px 0; }
 .tog { display: flex; align-items: center; gap: 12px; padding: 9px 0; font-size: 15px; }
 .tog input { width: 20px; height: 20px; accent-color: var(--accent); }
 
@@ -290,6 +291,11 @@ h1 em { font-style: normal; color: var(--muted); font-weight: 600; }
   <h2><span>View options</span><button class="btn" id="sheetDone">Done</button></h2>
   <h3>Theme</h3>
   <div class="themes" id="themes"></div>
+  <div id="tokenBox" hidden>
+    <h3>monday API token</h3>
+    <input class="field" id="token" type="password" placeholder="Paste token" autocomplete="off">
+    <p class="hint">Stays on this device and is only sent to api.monday.com. Get it in monday: your avatar → Developers → My access tokens.</p>
+  </div>
   <h3>Search</h3>
   <input class="field" id="search" type="search" placeholder="Course, customer, opportunity…" autocomplete="off">
   <h3>Instructor</h3>
@@ -640,7 +646,7 @@ function renderBanner() {
     html = `<div class="banner info"><p>Reading the Trainings, Bootcamps and Completed Courses boards from monday…</p></div>`;
   }
   $("banner").innerHTML = html;
-  const b = $("errAct"); if (b) b.onclick = () => sync(true);
+  const b = $("errAct"); if (b) b.onclick = () => (S.error && S.error.open ? openSheet() : sync(true));
 }
 function renderBoard(list) {
   const board = $("board");
@@ -800,6 +806,8 @@ function closeSheet() { $("scrim").classList.add("closed"); $("sheet").classList
 $("filterBtn").onclick = openSheet; $("sheetDone").onclick = closeSheet; $("scrim").onclick = closeSheet;
 $("who").onclick = (e) => { const b = e.target.closest("[data-who]"); if (!b) return; S.who = b.dataset.who; store.set("who", S.who); renderWho(); render(); };
 $("search").oninput = (e) => { S.search = e.target.value; render(); };
+$("token").value = tokenGet();
+$("token").onchange = (e) => { store.set("token", e.target.value.trim()); S.error = null; sync(true); };
 $("myName").value = S.myName;
 $("myName").oninput = (e) => { S.myName = e.target.value; store.set("myName", S.myName); renderWho(); render(); };
 for (const [id, k] of [["hideX", "hideX"], ["incDone", "incDone"], ["wkends", "wkends"]]) {
@@ -817,7 +825,28 @@ addEventListener("resize", () => {
 let mcp = null;
 const mcpReady = (window.claude && window.claude.use) ? window.claude.use("mcp").then((m) => (mcp = m)).catch(() => null) : Promise.resolve(null);
 
+// Standalone copy (GitHub Pages / Home Screen): no connector, so talk to
+// monday directly with the person's own API token, kept only on this device.
+const tokenGet = () => store.get("token", "");
+async function askDirect(query, variables) {
+  let res;
+  try {
+    res = await fetch("https://api.monday.com/v2", {
+      method: "POST",
+      headers: { "Authorization": tokenGet(), "Content-Type": "application/json", "API-Version": "2025-04" },
+      body: JSON.stringify({ query, variables }),
+    });
+  } catch (e) { throw { code: "network", message: String(e && e.message || e) }; }
+  if (res.status === 401 || res.status === 403) throw { code: "bad_token" };
+  if (res.status === 429) throw { code: "server_unavailable", retryable: true, retryAfterMs: 5000 };
+  if (!res.ok) throw { code: "server_unavailable", message: "HTTP " + res.status };
+  const j = await res.json();
+  if (j.errors && j.errors.length) throw { code: "tool_error", message: j.errors.map((x) => x.message).join("; ") };
+  if (j.error_message) throw { code: "tool_error", message: j.error_message };
+  return j.data || {};
+}
 async function ask(query, variables, fresh) {
+  if (!mcp) return askDirect(query, variables);
   const res = await mcp.callTool(SERVER, TOOL, { query, variables: JSON.stringify(variables) }, { cache: { staleTime: fresh ? 0 : 5 * 6e4, gcTime: 7 * 864e5, refresh: !!fresh } });
   let p = res.payload;
   if (typeof p === "string") { try { p = JSON.parse(p); } catch { throw { code: "tool_error", message: p }; } }
@@ -846,6 +875,8 @@ function explain(err) {
     case "blocked_by_policy": return { text: "Your organization's policy blocks reading monday from this page." };
     case "server_unavailable": return { text: "monday.com didn't answer just now. Showing your last sync.", action: "Try again" };
     case "tool_error": return { text: "monday returned an error: " + String(err.message || "").slice(0, 200), action: "Try again" };
+    case "bad_token": return { text: "monday didn't accept that API token. Paste a fresh one in View options.", action: "Open options", open: true };
+    case "network": return { text: "Couldn't reach monday. Check your connection. Showing your last sync.", action: "Try again" };
     case "not_granted": case "capability_disabled": case "capability_removed": return { text: "Live sync works when this page is open in claude.ai or the Claude app." };
     default: return { text: "Couldn't sync with monday" + (err && err.message ? ": " + String(err.message).slice(0, 160) : "."), action: "Try again" };
   }
@@ -853,8 +884,9 @@ function explain(err) {
 async function sync(fresh) {
   if (S.loading) return;
   await mcpReady;
-  if (!mcp) {
-    S.error = { text: S.all.length ? "Showing your last sync. Live sync works when this page is open in claude.ai or the Claude app." : "Open this page in claude.ai or the Claude app to load your monday boards." };
+  document.getElementById("tokenBox").hidden = !!mcp;
+  if (!mcp && !tokenGet()) {
+    S.error = { text: "Add your monday API token to load the calendar. In monday: your avatar → Developers → My access tokens.", action: "Add token", open: true };
     render(); return;
   }
   S.loading = true; S.error = null; render();
