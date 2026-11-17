@@ -1,0 +1,25 @@
+{
+  // IIS Trainings calendar: static page + /api/trainings, behind Cloudflare Access.
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "iis-trainings",
+  "main": "src/worker.js",
+  "compatibility_date": "2025-06-01",
+  "assets": {
+    "directory": "./public",
+    "binding": "ASSETS",
+    "not_found_handling": "single-page-application"
+  },
+  // Serve on <name>.<your-subdomain>.workers.dev. Preview URLs are off so
+  // there is no second address that could skip the Access sign-in.
+  "workers_dev": true,
+  "preview_urls": false,
+  "observability": { "enabled": true },
+  "vars": {
+    // Optional but recommended: fill these in after you turn on Access so the
+    // Worker fully verifies every sign-in token (see cloudflare/README.md).
+    // "ACCESS_TEAM_DOMAIN": "yourteam.cloudflareaccess.com",
+    // "ACCESS_AUD": "the Application Audience (AUD) tag"
+  }
+  // Secret (set in the dashboard or with `npx wrangler secret put`):
+  //   MONDAY_API_TOKEN
+}

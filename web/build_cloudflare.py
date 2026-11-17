@@ -1,10 +1,10 @@
-"""Build the standalone GitHub Pages copy of the calendar into ../docs.
+"""Build the Cloudflare copy of the calendar page into ../cloudflare/public.
 
 The page source (web/index.html) is written for claude.ai, which adds the
 <html>/<head> skeleton at publish time. This wraps it in that skeleton plus
 the bits iOS needs to run it full screen from the Home Screen.
 
-Run: python3 web/build_pages.py
+Run after editing web/index.html: python3 web/build_cloudflare.py
 """
 from pathlib import Path
 
@@ -28,6 +28,5 @@ head = """<!doctype html>
 <style>:root{padding:env(safe-area-inset-top,0px) 0 env(safe-area-inset-bottom,0px)}body{margin:0}[hidden]{display:none!important}img{max-width:100%}</style>
 </head><body>
 """
-(root / "docs" / "index.html").write_text(head + body + "\n</body></html>\n")
-(root / "docs" / ".nojekyll").write_text("")
-print("wrote docs/index.html")
+(root / "cloudflare" / "public" / "index.html").write_text(head + body + "\n</body></html>\n")
+print("wrote cloudflare/public/index.html")
